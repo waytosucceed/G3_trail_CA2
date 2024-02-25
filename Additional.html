@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Additional Activity</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="wts.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya&display=swap" rel="stylesheet">
+</head>
+<body>
+  <audio id="points" src="cheers.mp3"></audio>
+  <audio id="fail" src="fail.mp3"></audio>
+
+  <div class="header" style="width:100%; background-color:rgba(255, 255, 255, 0)">
+    <img src="Logo.png" width="12%" style="float:left; margin-top:10px" class="img-responsive">
+    <span> <img src="header.png" width="50%" height="100px"; class="img-responsive"></span>
+  </div>
+  <br>
+  <br>
+    <center>
+
+      <div class ="container">
+
+        <img src="a.jpg" class="img-responsive" width="200">
+        <h3 id="story"> Q1. What is the time on the clock in hours and minutes</h3>
+        <input id ="input1" class="form-control inputnum1" type="number" placeholder="Hours" >
+        <label>:</label>
+        <input id ="input12" class="form-control inputnum1" type="number" placeholder="Minutes" >        
+        <br>
+        <button id="subbtn" class="btn btn-success" onclick="checkAnswer()">Submit Answer</button>
+  
+        <p id="compliment" class="comm"></p>
+        <hr>
+
+        <img src="a1.jpg" class="img-responsive" width=60%>
+        <h3 id="story"> Q2. What is the time on the clock in hours and minutes</h3>
+        <input id ="input4" class="form-control inputnum1" type="number" placeholder="Hours" >
+        <label>:</label>
+        <input id ="input5" class="form-control inputnum1" type="number" placeholder="Minutes" >
+  
+        <br>
+        <button id="subbtn" class="btn btn-success" onclick="checkAnswer1()">Submit Answer</button>
+
+        <p id="compliment1" class="comm"></p>
+        <hr>
+
+      <img src="a2.jpg" class="img-responsive" width="60%">
+
+      <h3 id="story"> Q3. What is the time on the clock in hours and minutes</h3>
+      <input id ="input7" class="form-control inputnum1" type="number" placeholder="Hours" >
+      <label>:</label>
+      <input id ="input8" class="form-control inputnum1" type="number" placeholder="Minutes" >
+
+      <br>
+      <button id="subbtn" class="btn btn-success" onclick="checkAnswer2()">Submit Answer</button>
+
+      <p id="compliment2" class="comm"></p>
+      <hr>
+
+      <img src="a3.jpg" class="img-responsive" width=200px>
+      <h3 id="story"> Q4. What is the time on the clock in hours and minutes</h3>
+      <input id ="input10" class="form-control inputnum1" type="number" placeholder="Hours" >
+      <label>:</label>
+      <input id ="input11" class="form-control inputnum1" type="number" placeholder="Minutes" >
+      
+      <br>
+      <button id="subbtn" class="btn btn-success" onclick="checkAnswer3()">Submit Answer</button>
+
+      <p id="compliment3" class="comm"></p>
+      <hr>
+
+      <img src="a4.jpg" class="img-responsive" width=200px>
+      <h3 id="story"> Q5. What is the time on the clock in hours and minutes</h3>
+      <input id ="input13" class="form-control inputnum1" type="number" placeholder="Hours" >
+      <label>:</label>
+      <input id ="input14" class="form-control inputnum1" type="number" placeholder="Minutes" >
+
+      <br>
+      <button id="subbtn" class="btn btn-success" onclick="checkAnswer4()">Submit Answer</button>
+
+      <p id="compliment4" class="comm"></p>
+      <hr>
+
+      <img src="a5.jpg" class="img-responsive" width=200px>
+      <h3 id="story"> Q6. What is the time on the clock in hours and minutes</h3>
+      <input id ="input16" class="form-control inputnum1" type="number" placeholder="Hours" >
+      <label>:</label>
+      <input id ="input17" class="form-control inputnum1" type="number" placeholder="Minutes" >
+
+      <br>
+      <button id="subbtn" class="btn btn-success" onclick="checkAnswer5()">Submit Answer</button>
+
+      <p id="compliment5" class="comm"></p>
+      <hr>
+   
+  </div>
+</center>
+      <br>
+      <br>
+      <br>
+      <br>
+      <footer style="background-color:antiquewhite; font-size:20px;">Copyright: Way to Succeed Classes <img src="Logo.png" width="70"></footer>
+   
+   <script>
+      function checkAnswer(){
+        a= document.getElementById("input1").value;
+        b= document.getElementById("input2").value;
+        if(a=="5" ){
+          if(b=="00"){
+            document.getElementById("compliment").innerHTML= "Well Done &#128512"
+            document.getElementById("points").play();     
+          }
+         else{
+          document.getElementById("compliment").innerHTML= "Check minutes"
+          document.getElementById("fail").play();
+         } 
+          
+      }
+        else{
+          document.getElementById("compliment").innerHTML= "Think Again &#128533"
+          document.getElementById("fail").play();
+        }
+      }
+
+      function checkAnswer1(){
+        a= Number(document.getElementById("input4").value);
+        b= Number(document.getElementById("input5").value);
+        c= Number(document.getElementById("input6").value);
+
+        if(a=="5" ){
+          if(b=="00"){
+            document.getElementById("compliment1").innerHTML= "Well Done &#128512"
+            document.getElementById("points").play();     
+          }
+         else{
+          document.getElementById("compliment1").innerHTML= "Check minutes"
+          document.getElementById("fail").play();
+         } 
+          
+      }
+        else{
+          document.getElementById("compliment1").innerHTML= "Think Again &#128533"
+          document.getElementById("fail").play();
+        }
+      }
+
+      function checkAnswer2(){
+        a= Number(document.getElementById("input7").value);
+        b= Number(document.getElementById("input8").value);
+        c= Number(document.getElementById("input9").value);
+
+        if(a=="5" ){
+          if(b=="00"){
+            document.getElementById("compliment2").innerHTML= "Well Done &#128512"
+            document.getElementById("points").play();     
+          }
+         else{
+          document.getElementById("compliment2").innerHTML= "Check minutes"
+          document.getElementById("fail").play();
+         } 
+          
+      }
+        else{
+          document.getElementById("compliment2").innerHTML= "Think Again &#128533"
+          document.getElementById("fail").play();
+        }
+      }
+
+      function checkAnswer3(){
+        a= Number(document.getElementById("input10").value);
+        b= Number(document.getElementById("input11").value);
+
+        if(a=="5" ){
+          if(b=="00"){
+            document.getElementById("compliment3").innerHTML= "Well Done &#128512"
+            document.getElementById("points").play();     
+          }
+         else{
+          document.getElementById("compliment3").innerHTML= "Check minutes"
+          document.getElementById("fail").play();
+         } 
+          
+      }
+        else{
+          document.getElementById("compliment3").innerHTML= "Think Again &#128533"
+          document.getElementById("fail").play();
+        }
+      }
+
+      function checkAnswer4(){
+        a= Number(document.getElementById("input13").value);
+        b= Number(document.getElementById("input14").value);
+        c= Number(document.getElementById("input15").value);
+
+        if(a=="5" ){
+          if(b=="00"){
+            document.getElementById("compliment4").innerHTML= "Well Done &#128512"
+            document.getElementById("points").play();     
+          }
+         else{
+          document.getElementById("compliment4").innerHTML= "Check minutes"
+          document.getElementById("fail").play();
+         } 
+          
+      }
+        else{
+          document.getElementById("compliment4").innerHTML= "Think Again &#128533"
+          document.getElementById("fail").play();
+        }
+      }
+
+      function checkAnswer5(){
+        a= Number(document.getElementById("input16").value);
+        b= Number(document.getElementById("input17").value);
+        if(a=="5" ){
+          if(b=="00"){
+            document.getElementById("compliment5").innerHTML= "Well Done &#128512"
+            document.getElementById("points").play();     
+          }
+         else{
+          document.getElementById("compliment5").innerHTML= "Check minutes"
+          document.getElementById("fail").play();
+         } 
+          
+      }
+        else{
+          document.getElementById("compliment5").innerHTML= "Think Again &#128533"
+          document.getElementById("fail").play();
+        }
+      }
+   </script>
+</body>
+
+</html>

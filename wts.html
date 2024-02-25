@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>G3C11_Class Activity2</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+
+  <link rel="stylesheet" href="wts.css">
+  <link rel="icon" type="image/x-icon" href="Logo_last.png">
+</head>
+<body>
+  <audio id="cheers" >
+    <source src="cheers.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="points" src="points.mp3"></audio>
+<div class="header" style="width:100%;">
+   <img src="Logo.png" width="12%" style="float:left; margin-top:10px" class="img-responsive">
+   <span> <img src="header.png" width="50%" height="100px"; class="img-responsive"></span>
+</div>
+<br>
+<br>
+  <center>
+  <h1 id="heading">What is the time now</h1>
+  <div class="maindiv">
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 imgdiv">
+        <img id ="math_ques" src="MAth Question.jpg" width="90%" height="90%">
+    </div>
+    <div id="questiondiv" class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+      <div id="question"></div>
+      <br><br><br>
+      <div class="menu"><br><ul id="options"></ul></div>
+      <button id="subbtn" class="btn btn-success" onclick="checkAnswer()">Submit Answer</button>
+      <button id="nextbtn" class="btn btn-primary" onclick="newques()" style="display:none">Next</button>
+      <p id="result"></p>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4" id="candiv">
+      <button class="btn btn-info" onclick="clearCanvas()" style="width:90%">Clear Board</button>
+      <br>
+    </div>
+  </div>
+  <script>
+    // Define an array of questions and their options
+    var questions = [
+      
+    {
+      question: "Q1. I went for a walk at 6:15 AM. How do I say  this time in words?",
+      options: ["Quarter past six", "Quarter to seven", "Half past six", "Half past seven"],
+      answer: "Quarter past six"
+    },
+
+    {
+      question: "Q2. What is the time now?",
+      options: ["Quarter past seven", "Quarter to seven", "Half past seven", "Nine and Seven"],
+      answer: "Quarter to seven"
+    },
+
+    {
+      question: "Q3. What time is shown on the clock.",
+      options: ["Quarter past three", "Quarter to three", "Half past three", "Three past Six"],
+      answer: "Half past three"
+    },
+
+    
+    {
+      question: "Q4. My grandfather goes for a walk at 8:00 AM and comes back at 8:30 AM. Select the right option ",
+      options: ["He comes back at Quarter to eight", "He comes back at Quarter past eight", "He comes back at Half past eight", "He comes back at Half to eight"],
+      answer: "He comes back at Half past eight"
+    },
+
+    {
+      question: "Q5. I started eating my breakfast at 9:00 AM and finished eating at 9:15 AM. How do I say the time when I finished?",
+      options: ["Quarter past nine", "Quarter to nine", "Half past nine", "Three past nine"],
+      answer: "Quarter past nine"
+    },
+
+    {
+      question: "Q6. My mom leaves for office at 7:45 AM. How do I say this time? ",
+      options: ["Quarter past seven", "Quarter to seven", "Half past seven", "Quarter to Eight"],
+      answer: "Quarter to Eight"
+    },
+
+    { 
+      question: "Q7. My grandmother goes to the temple when hours hand has just crossed nine and minutes hand is on nine. How do I say the time in words?",
+      options: ["Quarter past nine", "Quarter to ten", "Half past ten", "Quarter to nine"],
+      answer: "Quarter to ten"
+    },
+
+    {
+      question: "Q8. My grandmother comes back when Hours hand is at ten and minutes hand is on three. How do I say this time",
+      options: ["Quarter past ten", "Quarter to ten", "Half past ten", "Half past 11"],
+      answer: "Quarter past ten"
+    },
+
+      {
+        question: "Q9. My grandfather and I play snakes and ladders at 11:15. How do we say this time in words?",
+        options: ["Quarter to eleven", "Three past eleven ", "Quarter past eleven", "Half past eleven"],
+        answer: "Quarter past eleven"
+      },
+
+      {
+        question: "Q10. I did all the questions on time. What is the time on my clock?",
+        options: ["Half Past four", "Quarter past four", "Quarter to five", "Half past five"],
+        answer: "Half Past four"
+      },
+
+      {
+        question: "Q11. My mom comes back from office at this time. What is the time on the clock?",
+        options: ["Quarter past five", "Quarter to six", "Quarter to five", "Half past five"],
+        answer: "Quarter to six"
+      },
+
+      
+
+      // Add more questions here
+    ];
+
+    //define the array of images
+
+    var img= ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg", "8.jpg", "9.jpg", "10.jpg", "11.jpg", "12.jpg", "13.jpg", "14.jpg", "15.jpg"]
+    
+    // Get a random question from the array
+
+    var randomQuestion = questions[0];
+    var updatedimage = img[0]
+    document.getElementById("math_ques").src = updatedimage
+    document.getElementById("question").innerHTML = randomQuestion.question;
+    
+    randomQuestion.options.forEach(function(option) {
+      var li = document.createElement("li");
+      li.innerHTML = '<input type="radio" name="answer" value="' + option + '"> ' + option;
+      document.getElementById("options").appendChild(li);
+    });
+
+// Create a function here like family array project of Byjus to display next question \
+    // from array everytime instead of random question
+    var i=1;
+    var count=questions.length
+    function newques(){
+      if(i==count){
+        document.getElementById("heading").innerHTML = "Thank You...."
+        document.getElementById("math_ques").src = "last.jpg"
+        document.getElementById("question").innerHTML=""
+        document.getElementById("options").innerHTML="Well Done"
+        document.getElementById("cheers").play()
+      document.getElementById("result").innerHTML ="Click on the link to practice more <a href='Additional.html'>Practice More </a>"
+      document.getElementById("nextbtn").style.display="none"
+      }
+      else{
+
+      document.getElementById("options").innerHTML=""
+      document.getElementById("result").innerHTML =""
+      
+  
+      updatedimage= img[i]
+      document.getElementById("math_ques").src = updatedimage
+
+// Display the question and options on the page
+      randomQuestion = questions[i];    
+    document.getElementById("question").innerHTML = randomQuestion.question;
+    
+    
+    randomQuestion.options.forEach(function(option) {
+      var li = document.createElement("li");
+      li.innerHTML = '<input type="radio" name="answer" value="' + option + '"> ' + option;
+      document.getElementById("options").appendChild(li);
+    });
+    document.getElementById("subbtn").style.display="inline-block"
+        document.getElementById("nextbtn").style.display="none"
+
+    i++;
+    }
+  }
+    
+    
+    // Check the selected answer against the correct answer
+    function checkAnswer() {
+      var selectedAnswer = document.querySelector('input[name="answer"]:checked').value;
+      if (selectedAnswer === randomQuestion.answer) {
+        document.getElementById("result").innerHTML = "Correct! &#128512" ;
+        document.getElementById("points").play();
+        document.getElementById("subbtn").style.display="none"
+        document.getElementById("nextbtn").style.display="inline-block"
+      } else {
+        document.getElementById("result").innerHTML = "Incorrect! &#128542";
+      }
+    }
+    
+    function setup() {
+      canvas = createCanvas(350, 390);
+      canvas.parent("candiv")
+      background("white");
+    }
+    
+    function clearCanvas() {
+    
+      background("white");
+    }
+    
+    function draw() {
+    
+      // Set stroke weight to 13
+      strokeWeight(5);
+      // Set stroke color to black
+      stroke(0);
+      // If mouse is pressed, draw line between previous and current mouse positions
+      if (mouseIsPressed) {
+        line(pmouseX, pmouseY, mouseX, mouseY);
+      }
+    }
+    
+
+  </script>
+</center>
+</body>
+</html>
